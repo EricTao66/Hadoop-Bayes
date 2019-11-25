@@ -24,3 +24,9 @@ hs_err_pid*
 
 # windows files
 *.ini
+/target/
+/.idea/
+/.settings/
+.project
+.classpath
+.DS_Store
