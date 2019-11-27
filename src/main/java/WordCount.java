@@ -20,8 +20,7 @@ public class WordCount {
         private final static IntWritable one = new IntWritable(1);
         private Text word = new Text();
 
-        public void map(Object key, Text value, Context context
-        ) throws IOException, InterruptedException {
+        public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
             StringTokenizer itr = new StringTokenizer(value.toString());
             while (itr.hasMoreTokens()) {
                 word.set(itr.nextToken());
@@ -30,8 +29,7 @@ public class WordCount {
         }
     }
 
-    public static class ClassTermMapper extends
-            Mapper<Text,Text,Text,IntWritable>{
+    public static class ClassTermMapper extends Mapper<Text,Text,Text,IntWritable>{
         private final static IntWritable one=new IntWritable(1);
         private Text word=new Text();
 
@@ -42,8 +40,7 @@ public class WordCount {
         }
     }
 
-    public static class IntSumReducer
-            extends Reducer<Text,IntWritable,Text,IntWritable> {
+    public static class IntSumReducer extends Reducer<Text,IntWritable,Text,IntWritable> {
         private IntWritable result = new IntWritable();
 
         public void reduce(Text key, Iterable<IntWritable> values,
