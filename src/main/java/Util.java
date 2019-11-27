@@ -11,15 +11,15 @@ public class Util {
     public static String[] CLASS_NAMES={"ALB","ARG","AUSTR","BELG","BRAZ","CANA"};
     //public static String[] CLASS_NAMES={"ALB"};
     //训练输入父目录
-    public static String INPUT_PATH="/src/main/resources/NBCorpus/Country/";
+    public static String INPUT_PATH="src/main/resources/NBCorpus/Country/";
     //类别统计输出目录
-    public static String OUTPUT_PATH="/outcome/";
+    public static String OUTPUT_PATH="outcome/";
     //class-term统计输出目录
-    public static String OUTPUT_PATH1="/outcome1/";
+    public static String OUTPUT_PATH1="outcome1/";
     //最终TEST测试分类结果输出目录
-    public static String OUTPUT_PATH2="/outcome2/";
+    public static String OUTPUT_PATH2="outcome2/";
     //Test测试分类输入文件父目录，具体测试文件在该目录下具体类别的子目录
-    public static String INPUT_PATH_TEST="/src/main/resources/NBCorpus/Test/";
+    public static String INPUT_PATH_TEST="src/main/resources/NBCorpus/Test/";
 
     //生成limit下随机20%比例的int list
     private static ArrayList<Integer> getRandomList(int limit){
