@@ -1,4 +1,4 @@
-package Predition;
+package prediction;
 
 import java.io.IOException;
 
@@ -11,7 +11,8 @@ import org.apache.hadoop.mapreduce.RecordReader;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 
-public class PredictTestInputFormat extends FileInputFormat<NullWritable,Text>{
+public class PredictTestInputFormat
+        extends FileInputFormat<NullWritable, Text> {
 
     @Override
     protected boolean isSplitable(JobContext context, Path filename) {
@@ -20,10 +21,8 @@ public class PredictTestInputFormat extends FileInputFormat<NullWritable,Text>{
 
     @Override
     public RecordReader<NullWritable, Text> createRecordReader(InputSplit split, TaskAttemptContext context)
-            throws  IOException, InterruptedException{
-        // 创建对象
-        PredictTestRecordReader recordReader = new PredictTestRecordReader();
-        // 返回对象
-        return recordReader;
+            throws IOException, InterruptedException {
+        PredictTestRecordReader recordReader = new PredictTestRecordReader();// 创建对象
+        return recordReader;// 返回对象
     }
 }
