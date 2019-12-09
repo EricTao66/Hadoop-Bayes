@@ -1,0 +1,2 @@
+public class WholeFileInputFormat {
+}
