@@ -19,7 +19,7 @@ public class DocCountDriver {
 
     public static void main(String[] args)
             throws IOException, ClassNotFoundException, InterruptedException, URISyntaxException {
-
+        // 文件处理
         args = new String[]{Util.INPUT_PATH, Util.OUTPUT_PATH};
         Path input_path = new Path(args[0] + "train/");
         Path output_path = new Path(args[1] + "docCount/");

@@ -10,8 +10,11 @@ import java.io.IOException;
 public class Util {
 
     public static final String[] CLASS_NAMES = {"BRAZ", "CANA"};//训练及测试选取的类别
-    //    public static final String BASE_PATH = "src/main/resources/";
-    public static final String BASE_PATH = "hdfs://localhost:9000/user/erictao/";
+
+//    public static final String BASE_PATH = "src/main/resources/";//单机模式
+//    public static final String BASE_PATH = "hdfs://localhost:9000/user/erictao/";//伪分布式
+    public static final String BASE_PATH = "hdfs://master:9000/";//分布式
+
     public static final String INPUT_PATH = BASE_PATH + "input/";//输入目录
     public static final String OUTPUT_PATH = BASE_PATH + "output/";//输出目录
 

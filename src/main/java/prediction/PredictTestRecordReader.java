@@ -11,8 +11,7 @@ import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.mapreduce.lib.input.LineRecordReader;
 
-public class PredictTestRecordReader
-        extends RecordReader<NullWritable, Text> {
+public class PredictTestRecordReader extends RecordReader<NullWritable, Text> {
 
     FileSplit split;
     Configuration conf;
@@ -20,19 +19,18 @@ public class PredictTestRecordReader
     boolean isProcess = false;
     LineRecordReader reader = new LineRecordReader();
 
+    // 初始化
     @Override
     public void initialize(InputSplit split, TaskAttemptContext context)
-            throws IOException, InterruptedException {
-        // 初始化
+            throws IOException {
         this.split = (FileSplit) split;
         conf = context.getConfiguration();
         reader.initialize(split, context);
     }
 
+    // 逐个读取文件
     @Override
-    public boolean nextKeyValue()
-            throws IOException, InterruptedException {
-        // 读取一个一个的文件
+    public boolean nextKeyValue() throws IOException {
         if (!isProcess) {
             String result = "";
             while (reader.nextKeyValue()) {
@@ -46,26 +44,22 @@ public class PredictTestRecordReader
     }
 
     @Override
-    public NullWritable getCurrentKey()
-            throws IOException, InterruptedException {
+    public NullWritable getCurrentKey() {
         return NullWritable.get();
     }
 
     @Override
-    public Text getCurrentValue()
-            throws IOException, InterruptedException {
+    public Text getCurrentValue() {
         return value;
     }
 
+    // 获取当前进度
     @Override
-    public float getProgress()
-            throws IOException, InterruptedException {
-        // 获取当前进度
+    public float getProgress() throws IOException {
         return reader.getProgress();
     }
 
     @Override
-    public void close()
-            throws IOException {
+    public void close() {
     }
 }

@@ -26,7 +26,6 @@
   <properties>
     <hadoopVersion>2.7.7</hadoopVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <!--toolsJar>${env.JAVA_HOME}/lib/tools.jar</toolsJar-->
   </properties>
 
   <dependencies>
@@ -47,6 +46,11 @@
     </dependency>
     <dependency>
       <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-mapreduce-client-jobclient</artifactId>
+      <version>${hadoopVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-client</artifactId>
       <version>${hadoopVersion}</version>
     </dependency>
@@ -55,14 +59,6 @@
       <artifactId>log4j</artifactId>
       <version>1.2.17</version>
     </dependency>
-    <!--dependency>
-      <groupId>com.sun</groupId>
-      <artifactId>tools</artifactId>
-      <version>1.8</version>
-      <scope>system</scope>
-      <systemPath>${toolsJar}</systemPath>
-      <optional>true</optional>
-    </dependency-->
   </dependencies>
 </project>
 

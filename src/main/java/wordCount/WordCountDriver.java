@@ -12,13 +12,14 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
+import prediction.TextPair;
 import prediction.Util;
 
 public class WordCountDriver {
 
     public static void main(String[] args)
             throws IOException, ClassNotFoundException, InterruptedException, URISyntaxException {
-
+        // 文件处理
         args = new String[]{Util.INPUT_PATH, Util.OUTPUT_PATH};
         Path input_path = new Path(args[0] + "train/");
         Path output_path = new Path(args[1] + "wordCount/");

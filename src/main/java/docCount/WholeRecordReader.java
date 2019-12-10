@@ -14,26 +14,23 @@ import org.apache.hadoop.mapreduce.RecordReader;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
-public class WholeRecordReader
-        extends RecordReader<NullWritable, BytesWritable> {
+public class WholeRecordReader extends RecordReader<NullWritable, BytesWritable> {
 
     BytesWritable value = new BytesWritable();
     boolean isProcess = false;
     FileSplit split;
     Configuration configuration;
 
+    // 初始化
     @Override
-    public void initialize(InputSplit split, TaskAttemptContext context)
-            throws IOException, InterruptedException {
-        // 初始化
+    public void initialize(InputSplit split, TaskAttemptContext context) {
         this.split = (FileSplit) split;
         configuration = context.getConfiguration();
     }
 
+    // 逐个读取文件
     @Override
-    public boolean nextKeyValue()
-            throws IOException, InterruptedException {
-        // 读取一个一个的文件
+    public boolean nextKeyValue() {
         if (!isProcess) {
             // 0.缓存区
             byte[] buf = new byte[(int) split.getLength()];
@@ -60,29 +57,25 @@ public class WholeRecordReader
         return false;
     }
 
+    // 获取当前键
     @Override
-    public NullWritable getCurrentKey()
-            throws IOException, InterruptedException {
-        // 获取当前键
+    public NullWritable getCurrentKey() {
         return NullWritable.get();
     }
 
+    // 获取当前值
     @Override
-    public BytesWritable getCurrentValue()
-            throws IOException, InterruptedException {
-        // 获取当前值
+    public BytesWritable getCurrentValue() {
         return value;
     }
 
+    // 获取当前进度
     @Override
-    public float getProgress()
-            throws IOException, InterruptedException {
-        // 获取当前进度
+    public float getProgress() {
         return isProcess ? 1 : 0;
     }
 
     @Override
-    public void close()
-            throws IOException {
+    public void close() {
     }
 }

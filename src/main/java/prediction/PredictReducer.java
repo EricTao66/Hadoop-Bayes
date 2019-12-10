@@ -5,23 +5,26 @@ import java.io.IOException;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class PredictReducer
-        extends Reducer<Text, Text, Text, Text> {
+/**
+ * 输入的 key   TextPair      文档名, 类名
+ * 输入的 value TextPair      类名, 文档属于该类的概率
+ * 输出的 key   TextPair      文档名, 实际的类别
+ * 输出的 value Text          预测的类别
+ **/
+public class PredictReducer extends Reducer<TextPair, TextPair, TextPair, Text> {
 
     @Override
-    protected void reduce(Text key, Iterable<Text> values, Context context)
+    protected void reduce(TextPair key, Iterable<TextPair> values, Context context)
             throws IOException, InterruptedException {
         Text value = new Text();
-        String max_classname = "";
         double max_prob = Double.NEGATIVE_INFINITY;
-        for (Text text : values) {
-            String[] args = text.toString().split("&");
-            if (Double.valueOf(args[1]) > max_prob) {
-                max_prob = Double.valueOf(args[1]);
-                max_classname = args[0];
+        for (TextPair v : values) {
+            double cur_prob = Double.parseDouble(v.getSecond().toString());
+            if (cur_prob > max_prob) {
+                max_prob = cur_prob;
+                value.set(v.getFirst());
             }
         }
-        value.set(max_classname);
         context.write(key, value);
     }
 }
