@@ -16,8 +16,8 @@ import org.apache.hadoop.mapreduce.lib.input.FileSplit;
  * 输出的 key   Text          类名
  * 输出的 value IntWritable   1
  *
- * INPUT:  <Null,File>
- * OUTPUT: <Class,1>
+ * INPUT:       <Null,File>
+ * OUTPUT:      <Class,1>
  **/
 public class DocCountMapper extends Mapper<NullWritable, BytesWritable, Text, IntWritable> {
 
