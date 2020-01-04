@@ -75,7 +75,7 @@ public class Prediction {
     }
 
     // 计算一个文档属于某类的条件概率
-    public static double conditionalProbabilityForClass(String content, String classname) {
+    public static double probForClass(String content, String classname) {
         double result = 0;
         String[] words = content.split("\n");
         for (String word : words) {

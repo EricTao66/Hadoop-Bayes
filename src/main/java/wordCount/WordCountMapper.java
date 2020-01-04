@@ -12,9 +12,12 @@ import prediction.TextPair;
 
 /**
  * 输入的 key   LongWritable  行号
- * 输入的 value Text          一行内容
- * 输出的 key   TextPair      单词对
- * 输出的 value IntWritable   单词的个数
+ * 输入的 value Text          一行内容(一个单词)
+ * 输出的 key   TextPair      类名和单词
+ * 输出的 value IntWritable   1
+ *
+ * INPUT:       <RowID,Term>
+ * OUTPUT:      <<Class,Term>,1>
  **/
 public class WordCountMapper extends Mapper<LongWritable, Text, TextPair, IntWritable> {
 

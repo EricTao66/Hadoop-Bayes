@@ -6,10 +6,13 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 /**
- * 输入的 key   TextPair      文档名, 类名
- * 输入的 value TextPair      类名, 文档属于该类的概率
+ * 输入的 key   TextPair      文档名，实际的类别
+ * 输入的 value TextPair      {<类名, 文档属于该类的概率>,...}
  * 输出的 key   TextPair      文档名, 实际的类别
  * 输出的 value Text          预测的类别
+ *
+ * INPUT:       <<docID,ActualClass>,{<Class0,Prob0>,<Class1,Prob1>,...,<Classn,Probn>}>
+ * OUTPUT:      <<docID,ActualClass>,PredictClass>
  **/
 public class PredictReducer extends Reducer<TextPair, TextPair, TextPair, Text> {
 

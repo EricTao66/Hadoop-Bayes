@@ -7,10 +7,13 @@ import org.apache.hadoop.mapreduce.Reducer;
 import prediction.TextPair;
 
 /**
- * 输入的 key   TextPair      单词对
- * 输入的 value IntWritable   单词的个数
- * 输出的 key   TextPair      单词对
- * 输出的 value IntWritable   单词的总个数
+ * 输入的 key   TextPair      类名和单词
+ * 输入的 value IntWritable   {1,1,...,1}
+ * 输出的 key   TextPair      类名和单词
+ * 输出的 value IntWritable   单词在该类出现的总次数
+ *
+ * INPUT:       <<Class,Term>,{1,1,...,1}>
+ * OUTPUT:      <<Class,Term>,TotalCount>
  **/
 public class WordCountReducer extends Reducer<TextPair, IntWritable, TextPair, IntWritable> {
 

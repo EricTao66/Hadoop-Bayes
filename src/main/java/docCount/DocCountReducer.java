@@ -8,9 +8,12 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 /**
  * 输入的 key   Text          类名
- * 输入的 value IntWritable   属于该类的文档个数
+ * 输入的 value IntWritable   {1,1,...1}
  * 输出的 key   Text          类名
  * 输出的 value IntWritable   属于该类的文档总个数
+ *
+ * INPUT:       <Class,{1,1,...1}>
+ * OUTPUT:      <Class,TotalCount>
  **/
 public class DocCountReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
 

@@ -14,7 +14,10 @@ import org.apache.hadoop.mapreduce.lib.input.FileSplit;
  * 输入的 key   NullWritable  空占位符
  * 输入的 value BytesWritable 文件流
  * 输出的 key   Text          类名
- * 输出的 value IntWritable   属于该类的文档个数
+ * 输出的 value IntWritable   1
+ *
+ * INPUT:  <Null,File>
+ * OUTPUT: <Class,1>
  **/
 public class DocCountMapper extends Mapper<NullWritable, BytesWritable, Text, IntWritable> {
 

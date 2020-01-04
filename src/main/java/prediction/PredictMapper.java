@@ -11,8 +11,11 @@ import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 /**
  * 输入的 key   NullWritable  空占位符
  * 输入的 value Text          文档
- * 输出的 key   TextPair      文档名, 类名
+ * 输出的 key   TextPair      文档名，实际的类别
  * 输出的 value TextPair      类名, 文档属于该类的概率
+ *
+ * INPUT:       <Null,File>
+ * OUTPUT:      <<docId,ActualClass>,<Class,Prob>>
  **/
 public class PredictMapper extends Mapper<NullWritable, Text, TextPair, TextPair> {
 
@@ -32,7 +35,7 @@ public class PredictMapper extends Mapper<NullWritable, Text, TextPair, TextPair
             throws IOException, InterruptedException {
         for (String classname : Util.CLASS_NAMES) {
             v.set(new Text(classname), new Text(Double.toString(
-                    Prediction.conditionalProbabilityForClass(value.toString(), classname))));
+                    Prediction.probForClass(value.toString(), classname))));
             context.write(k, v);
         }
     }
