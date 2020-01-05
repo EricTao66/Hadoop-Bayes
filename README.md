@@ -81,7 +81,17 @@ public static final String[] CLASS_NAMES = {"ALB", "ARG", "AUSTR", "BELG", "BRAZ
 ```
 
 
+## 主函数入口
+
+
+1. 执行 `DocCountDriver.main()` MapReduce任务，统计文档个数。
+2. 执行 `WordCountDriver.main()` MapReduce任务，统计单词个数。
+3. 执行 `PredictionDriver.main()` MapReduce任务，预测文档类别。
+4. 执行 `Evaluation.main()` Java本地任务，计算预测结果的Precision，Recall和F1值。
+
+
 ## 运行结果
+
 
 |        | Precision | Recall   | F1       |
 | ------ | --------- | -------- | -------- |
@@ -91,5 +101,5 @@ public static final String[] CLASS_NAMES = {"ALB", "ARG", "AUSTR", "BELG", "BRAZ
 | BELG   | 0.812500  | 0.866667 | 0.838710 |
 | BRAZ   | 0.894737  | 0.850000 | 0.871795 |
 | CANA   | 0.950000  | 0.730769 | 0.826087 |
-| 微平均 | 0.759664  | 0.807073 | 0.729837 |
-| 宏平均 | 0.731818  | 0.731818 | 0.731818 |
+| 微平均  | 0.759664  | 0.807073 | 0.729837 |
+| 宏平均  | 0.731818  | 0.731818 | 0.731818 |
